@@ -1,0 +1,6 @@
+framework module Pods_CountriesMVVM {
+  umbrella header "Pods-CountriesMVVM-umbrella.h"
+
+  export *
+  module * { export * }
+}
