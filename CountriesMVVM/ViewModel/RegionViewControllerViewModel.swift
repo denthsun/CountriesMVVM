@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 class RegionViewControllerViewModel: RegionViewControllerViewModelProtocol {
-
+      
     private var selectedIndexPath: IndexPath?
     
     var currentArray: [JSONModel]
+    var imageName: String
       
     func numberOfSections() -> Int {
         return currentArray.count
@@ -32,9 +34,11 @@ class RegionViewControllerViewModel: RegionViewControllerViewModelProtocol {
         self.selectedIndexPath = indexPath
     }
     
+    var changedValue: Box<String?> = Box(nil)
     
-    init(currentArray: [JSONModel]) {
+    init(currentArray: [JSONModel], imageName: String) {
         self.currentArray = currentArray
+        self.imageName = imageName
     }
     
 }

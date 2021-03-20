@@ -8,8 +8,7 @@
 import Foundation
 
 class CollectionViewCellViewModel: CollectionViewCellProcotol {
-    
-    
+
     private var country: JSONModel
     
     var countryName: String {
@@ -19,8 +18,7 @@ class CollectionViewCellViewModel: CollectionViewCellProcotol {
     var capital: String {
         return country.capital
     }
-
-    
+ 
     init(country: JSONModel) {
         self.country = country
     }

@@ -16,4 +16,8 @@ protocol RegionViewControllerViewModelProtocol {
     func viewModelForSelectedItem() -> CountryViewControllerViewModelProtocol?
     func selectItem(atIndexPath indexPath: IndexPath)
     
+    var imageName: String { set get }
+    
+    var changedValue: Box<String?> { get }
+    
 }

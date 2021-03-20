@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RegionViewController: UIViewController {
     
@@ -15,8 +16,9 @@ class RegionViewController: UIViewController {
     
     let collectionView = UICollectionView(frame: .init(), collectionViewLayout: UICollectionViewFlowLayout.init())
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-   
-
+    let backImage = UIImageView()
+    var nameForLabel = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
@@ -28,19 +30,29 @@ class RegionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        toplabel.text = viewModel?.currentArray[0].region
-
+        viewModel?.changedValue.value = nameForLabel
+        self.nameForLabel = viewModel?.currentArray[0].region ?? "FKY"
+        toplabel.text = nameForLabel
+        if self.nameForLabel == "Africa" {
+            self.toplabel.text = "zaebal"
+        }
+        
     }
+
     
     func setup() {
         [toplabel, collectionView].forEach { view.addSubview($0) }
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .blue
+        
+        backImage.contentMode = .scaleAspectFill
         
         toplabel.textColor = .systemRed
         toplabel.textAlignment = .center
         toplabel.font = UIFont.boldSystemFont(ofSize: 30)
+        
+        backImage.kf.setImage(with: URL(string: viewModel?.imageName ?? ""))
+        collectionView.backgroundView = backImage
         
     }
     
@@ -55,10 +67,10 @@ class RegionViewController: UIViewController {
     
     func setLayout() {
         layout.scrollDirection = .vertical
-        layout.itemSize = .init(width: 150, height: 150)
+        layout.itemSize = .init(width: 180, height: 200)
         collectionView.setCollectionViewLayout(layout, animated: true)
     }
-
+    
 }
 
 extension RegionViewController: UICollectionViewDelegate, UICollectionViewDataSource {

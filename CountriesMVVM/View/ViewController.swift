@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         
         europeButton.setTitleColor(UIColor.purple, for: .normal)
         americaButton.setTitleColor(UIColor.black, for: .normal)
-        asiaButton.setTitleColor(UIColor.white, for: .normal)
+        asiaButton.setTitleColor(UIColor.systemYellow, for: .normal)
         africaButton.setTitleColor(UIColor.purple, for: .normal)
         
         stackView.axis = .vertical
@@ -62,46 +62,48 @@ class ViewController: UIViewController {
     }
     
     func requests() {
-        dataFetcher.africaRequest { [weak self] (africa) in
-            self?.viewModel.africaArray = africa
-            print(africa as Any)
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        queue.async { [weak self] in
+            self?.dataFetcher.africaRequest { [weak self] (africa) in
+                self?.viewModel.africaArray = africa
+                print(africa as Any)
+            }
+            self?.dataFetcher.asiaRequest { [weak self] (asia) in
+                self?.viewModel.asiaArray = asia
+            }
+            self?.dataFetcher.americaRequest { [weak self] (america) in
+                self?.viewModel.americaArray = america
+            }
+            self?.dataFetcher.europeRequest { [weak self] (europe) in
+                self?.viewModel.europeArray = europe
+            }
         }
-        dataFetcher.asiaRequest { [weak self] (asia) in
-            self?.viewModel.asiaArray = asia
-        }
-        dataFetcher.americaRequest { [weak self] (america) in
-            self?.viewModel.americaArray = america
-        }
-        dataFetcher.europeRequest { [weak self] (europe) in
-            self?.viewModel.europeArray = europe
-        }
     }
     
-    
-    @objc func europeTapped() {
-        let vc = RegionViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        vc.viewModel = viewModel.viewModelEurope()
-    }
-    
-    @objc func americaTapped() {
-        let vc = RegionViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        vc.viewModel = viewModel.viewModelAmerica()
-    }
-    
-    @objc func asiaTapped() {
-        let vc = RegionViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        vc.viewModel = viewModel.viewModelAsia()
-    }
-    
-    @objc func africaTapped() {
-        let vc = RegionViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        vc.viewModel = viewModel.viewModelAfrica()
-        
-    }
-    
+@objc func europeTapped() {
+    let vc = RegionViewController()
+    navigationController?.pushViewController(vc, animated: true)
+    vc.viewModel = viewModel.viewModelEurope()
+}
+
+@objc func americaTapped() {
+    let vc = RegionViewController()
+    navigationController?.pushViewController(vc, animated: true)
+    vc.viewModel = viewModel.viewModelAmerica()
+}
+
+@objc func asiaTapped() {
+    let vc = RegionViewController()
+    navigationController?.pushViewController(vc, animated: true)
+    vc.viewModel = viewModel.viewModelAsia()
+}
+
+@objc func africaTapped() {
+    let vc = RegionViewController()
+    navigationController?.pushViewController(vc, animated: true)
+    vc.viewModel = viewModel.viewModelAfrica()
+
+}
+
 }
 

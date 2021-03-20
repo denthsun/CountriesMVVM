@@ -21,7 +21,7 @@ class CollectionViewCell: UICollectionViewCell {
             capitalLabel.text = viewModel.capital
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -33,20 +33,27 @@ class CollectionViewCell: UICollectionViewCell {
         [label, capitalLabel].forEach { $0.adjustsFontSizeToFitWidth = true }
         [label, capitalLabel].forEach { $0.textColor = .systemRed }
         [label, capitalLabel].forEach { $0.textAlignment = .center }
-        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.numberOfLines = 0
-        capitalLabel.font = UIFont.systemFont(ofSize: 19)
         contentView.enableCornerRadius(radius: 5)
-        contentView.backgroundColor = .darkGray
+        contentView.layer.borderColor = UIColor.orange.cgColor
+        contentView.layer.borderWidth = 4
+        
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        label.textColor = UIColor.systemRed
+        label.textAlignment = .center
+        
+        capitalLabel.font = UIFont.systemFont(ofSize: 17)
+        capitalLabel.textColor = UIColor.systemRed
+        capitalLabel.textAlignment = .center
     }
     
     func constraint() {
         label.anchor(top: contentView.safeAreaLayoutGuide.topAnchor, leading: contentView.safeAreaLayoutGuide.leadingAnchor, bottom: capitalLabel.topAnchor, trailing: contentView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
-        capitalLabel.anchor(top: label.bottomAnchor, leading: contentView.safeAreaLayoutGuide.leadingAnchor, bottom: contentView.safeAreaLayoutGuide.bottomAnchor, trailing: contentView.safeAreaLayoutGuide.trailingAnchor)
+        capitalLabel.anchor(top: label.bottomAnchor, leading: contentView.safeAreaLayoutGuide.leadingAnchor, bottom: contentView.safeAreaLayoutGuide.bottomAnchor, trailing: contentView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
     }
     
     static func nib() -> UINib {
         return UINib(nibName: "CollectionViewCell", bundle: nil)
     }
-
+    
 }
