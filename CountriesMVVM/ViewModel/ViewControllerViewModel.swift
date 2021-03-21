@@ -14,23 +14,28 @@ class ViewControllerViewModel: ViewControllerViewModelProtocol {
     var asiaArray: [JSONModel]?
     var americaArray: [JSONModel]?
     
-
     func viewModelEurope() -> RegionViewControllerViewModelProtocol? {
-        return RegionViewControllerViewModel(currentArray: europeArray ?? [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 1, area: 1, flag: "no data", region: "")], imageName: "http://www.coe.int/documents/16695/61254353/news-5may.jpg/cbc66b66-c67f-06e5-3bc6-b21a77f05099")
+        guard let europeArray = europeArray else { return RegionViewControllerViewModel(currentArray: [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 0, flag: "no data", region: "no data")], imageName: "") }
+        return RegionViewControllerViewModel(currentArray: europeArray , imageName: "https://image.freepik.com/free-vector/waving-europeans-flag-the-flag-of-europe_131573-58.jpg")
     }
     
     func viewModelAmerica() -> RegionViewControllerViewModelProtocol? {
-        return RegionViewControllerViewModel(currentArray: americaArray ?? [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 1, area: 1, flag: "no data", region: "")], imageName: "https://www.forumdaily.com/wp-content/uploads/2018/12/Depositphotos_40852629_m-2015.jpg")
+        guard let americaArray = americaArray else { return RegionViewControllerViewModel(currentArray: [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 0, flag: "no data", region: "no data")], imageName: "") }
+        return RegionViewControllerViewModel(currentArray: americaArray , imageName: "https://www.forumdaily.com/wp-content/uploads/2018/12/Depositphotos_40852629_m-2015.jpg")
     }
     
     func viewModelAsia() -> RegionViewControllerViewModelProtocol? {
-        return RegionViewControllerViewModel(currentArray: asiaArray ?? [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 1, area: 1, flag: "no data", region: "")], imageName: "https://lh3.googleusercontent.com/proxy/OB83lX48s1O1oqR8Ka_s8V1qZSz8VOS5pVGPInyGnXhWgSyQbh5-_PQy2GrUdbjfbfgVXnJRUWV8WhkI3w0mGHrM67YKjyrqUXsAdesGyG3hfRmZH0nk")
+        guard let asiaArray = asiaArray else { return RegionViewControllerViewModel(currentArray: [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 0, flag: "no data", region: "no data")], imageName: "") }
+        
+        return RegionViewControllerViewModel(currentArray: asiaArray , imageName: "https://lh3.googleusercontent.com/proxy/OB83lX48s1O1oqR8Ka_s8V1qZSz8VOS5pVGPInyGnXhWgSyQbh5-_PQy2GrUdbjfbfgVXnJRUWV8WhkI3w0mGHrM67YKjyrqUXsAdesGyG3hfRmZH0nk")
     }
     
     func viewModelAfrica() -> RegionViewControllerViewModelProtocol? {
-        return RegionViewControllerViewModel(currentArray: africaArray ?? [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 1, area: 1, flag: "no data", region: "")], imageName: "https://static.dw.com/image/15894995_303.jpg")
+        guard let africaArray = africaArray else { return RegionViewControllerViewModel(currentArray: [JSONModel(name: "no data", capital: "no data", subregion: "no data", population: 0, flag: "no data", region: "no data")], imageName: "") }
+        
+        return RegionViewControllerViewModel(currentArray: africaArray , imageName: "https://static.dw.com/image/15894995_303.jpg")
     }
     
-
+    
     
 }

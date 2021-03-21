@@ -33,10 +33,6 @@ class RegionViewController: UIViewController {
         viewModel?.changedValue.value = nameForLabel
         self.nameForLabel = viewModel?.currentArray[0].region ?? "FKY"
         toplabel.text = nameForLabel
-        if self.nameForLabel == "Africa" {
-            self.toplabel.text = "zaebal"
-        }
-        
     }
 
     
@@ -52,8 +48,8 @@ class RegionViewController: UIViewController {
         toplabel.font = UIFont.boldSystemFont(ofSize: 30)
         
         backImage.kf.setImage(with: URL(string: viewModel?.imageName ?? ""))
+        backImage.alpha = 0.4
         collectionView.backgroundView = backImage
-        
     }
     
     func constraint() {
@@ -82,6 +78,17 @@ extension RegionViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell, let viewModel = viewModel else { return UICollectionViewCell() }
         
         cell.viewModel = viewModel.cellViewModel(forIndexPath: indexPath)
+        
+        if self.nameForLabel == "Africa" {
+            [cell.label, cell.capitalLabel].forEach { $0.textColor = UIColor.white }
+        } else if self.nameForLabel == "Americas" {
+            [cell.label, cell.capitalLabel].forEach { $0.textColor = UIColor.systemRed }
+        } else if self.nameForLabel == "Asia" {
+            [cell.label, cell.capitalLabel].forEach { $0.textColor = UIColor.systemYellow }
+        } else if self.nameForLabel == "Europe" {
+            [cell.label, cell.capitalLabel].forEach { $0.textColor = UIColor.systemPink }
+    }
+        
         
         return cell
     }

@@ -31,19 +31,17 @@ class CollectionViewCell: UICollectionViewCell {
     func setup() {
         [label, capitalLabel].forEach { contentView.addSubview($0) }
         [label, capitalLabel].forEach { $0.adjustsFontSizeToFitWidth = true }
-        [label, capitalLabel].forEach { $0.textColor = .systemRed }
+        [label, capitalLabel].forEach { $0.textColor = .white }
         [label, capitalLabel].forEach { $0.textAlignment = .center }
         label.numberOfLines = 0
-        contentView.enableCornerRadius(radius: 5)
+        contentView.enableCornerRadius(radius: 20)
         contentView.layer.borderColor = UIColor.orange.cgColor
-        contentView.layer.borderWidth = 4
+        contentView.layer.borderWidth = 2
         
         label.font = UIFont.boldSystemFont(ofSize: 26)
-        label.textColor = UIColor.systemRed
         label.textAlignment = .center
         
         capitalLabel.font = UIFont.systemFont(ofSize: 17)
-        capitalLabel.textColor = UIColor.systemRed
         capitalLabel.textAlignment = .center
     }
     

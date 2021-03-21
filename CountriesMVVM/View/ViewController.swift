@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     }
     
     func requests() {
-        let queue = DispatchQueue.global(qos: .userInteractive)
+        let queue = DispatchQueue.global(qos: .utility)
         queue.async { [weak self] in
             self?.dataFetcher.africaRequest { [weak self] (africa) in
                 self?.viewModel.africaArray = africa
@@ -80,30 +80,30 @@ class ViewController: UIViewController {
         }
     }
     
-@objc func europeTapped() {
-    let vc = RegionViewController()
-    navigationController?.pushViewController(vc, animated: true)
-    vc.viewModel = viewModel.viewModelEurope()
-}
-
-@objc func americaTapped() {
-    let vc = RegionViewController()
-    navigationController?.pushViewController(vc, animated: true)
-    vc.viewModel = viewModel.viewModelAmerica()
-}
-
-@objc func asiaTapped() {
-    let vc = RegionViewController()
-    navigationController?.pushViewController(vc, animated: true)
-    vc.viewModel = viewModel.viewModelAsia()
-}
-
-@objc func africaTapped() {
-    let vc = RegionViewController()
-    navigationController?.pushViewController(vc, animated: true)
-    vc.viewModel = viewModel.viewModelAfrica()
-
-}
-
+    @objc func europeTapped() {
+        let vc = RegionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        vc.viewModel = viewModel.viewModelEurope()
+    }
+    
+    @objc func americaTapped() {
+        let vc = RegionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        vc.viewModel = viewModel.viewModelAmerica()
+    }
+    
+    @objc func asiaTapped() {
+        let vc = RegionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        vc.viewModel = viewModel.viewModelAsia()
+    }
+    
+    @objc func africaTapped() {
+        let vc = RegionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        vc.viewModel = viewModel.viewModelAfrica()
+        
+    }
+    
 }
 
