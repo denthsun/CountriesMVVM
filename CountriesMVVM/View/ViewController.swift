@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     
     let dataFetcher = CountriesDataFetcher()
-    
     let viewModel = ViewControllerViewModel()
     
     let europeButton = GradientButton(colors: [UIColor.systemRed.cgColor, UIColor.systemOrange.cgColor, UIColor.systemBlue.cgColor])
@@ -26,7 +25,6 @@ class ViewController: UIViewController {
         setup()
         constraint()
     }
-    
     
     func setup() {
         view.addSubview(stackView)
@@ -53,11 +51,9 @@ class ViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 30
-        
     }
     
     func constraint() {
-        
         stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 2, right: 20))
     }
     
@@ -102,8 +98,7 @@ class ViewController: UIViewController {
         let vc = RegionViewController()
         navigationController?.pushViewController(vc, animated: true)
         vc.viewModel = viewModel.viewModelAfrica()
-        
     }
-    
+
 }
 

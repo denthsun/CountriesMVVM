@@ -18,6 +18,10 @@ class CollectionViewCellViewModel: CollectionViewCellProcotol {
     var capital: String {
         return country.capital
     }
+    
+    var population: Int {
+        return country.population
+    }
  
     init(country: JSONModel) {
         self.country = country

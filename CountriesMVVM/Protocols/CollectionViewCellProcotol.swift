@@ -10,4 +10,5 @@ import Foundation
 protocol CollectionViewCellProcotol: class {
     var countryName: String { get }
     var capital: String { get }
+    var population: Int { get }
 }

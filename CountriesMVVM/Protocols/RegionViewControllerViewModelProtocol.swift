@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RegionViewControllerViewModelProtocol {
-    var currentArray: [JSONModel] { get }
+    var currentArray: [JSONModel] { set get }
     
     func numberOfSections() -> Int
     func cellViewModel(forIndexPath indexPath: IndexPath) -> CollectionViewCellProcotol?
@@ -20,4 +20,6 @@ protocol RegionViewControllerViewModelProtocol {
     
     var changedValue: Box<String?> { get }
     
+    func upButtonTapped() -> [JSONModel]
+    func downButtonTapped() -> [JSONModel]
 }
